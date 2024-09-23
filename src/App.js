@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [visibule, setTextVisibility] = useState(false);
+
+  const handdleTextVisibility = () => {
+    setTextVisibility(!visibule);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Con el boton de abajo aparece o desaparece texto.</h1>
+      <button onClick={handdleTextVisibility}>
+        {visibule ? 'Ocultar' : 'Mostrar'}
+      </button>
+
+      {visibule && <p>TEXTO A MOSTRAR O OCULTAR.</p>}
     </div>
   );
 }
